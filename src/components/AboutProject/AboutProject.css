@@ -156,8 +156,16 @@
   }
 
   .about__description {
-    padding-bottom: 46px;
+    padding-bottom: 55px;
   }
 
-  .about__text {}
+  .about__line-segment {
+    font-size: 11px;
+    line-height: normal;
+  }
+
+  .about__part {
+    font-size: 11px;
+    line-height: normal;
+  }
 }

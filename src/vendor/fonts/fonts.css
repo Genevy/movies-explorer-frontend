@@ -2,6 +2,7 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url(./Inter-Regular.woff2) format("woff2"),
     url(./Inter-Regular.woff) format("woff");
 }
@@ -15,3 +16,11 @@
     url(./Inter-Medium.woff) format("woff");
 }
 
+@font-face {
+  font-family: "Suisse Intl";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./SuisseIntl-Regular.woff2) format("woff2"),
+    url(./SuisseIntl-Regular.woff) format("woff");
+}
