@@ -1,0 +1,212 @@
+.search-form {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 67px;
+  padding-bottom: 70px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.search-form__form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+  background: #F9F9F9;
+  border-radius: 9px;
+}
+
+.search-form__input {
+  box-sizing: border-box;
+  background-color: #F9F9F9;
+  border: none;
+  width: 100%;
+  margin-right: 6px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #A0A0A0;
+  padding: 16px 19px 16px 16px;
+}
+
+.search-form__icon {
+  width: 34px;
+  height: 34px;
+  background-image: url(../../images/search_icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 25px;
+}
+
+.search-form__input:focus {
+  outline: 1px solid #E8E8E8;
+  border-radius: 9px;
+}
+
+.search-form__button {
+  box-sizing: border-box;
+  min-width: 44px;
+  height: 44px;
+  background-image: url(../../images/search_button.svg);
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  padding: 0;
+}
+
+.search-form__divider {
+  display: block;
+  position: relative;
+  width: 1px;
+  height: 40px;
+  background-color: #E8E8E8;
+  margin-left: 27px;
+  margin-right: 29px;
+}
+
+.search-form__filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  position: relative;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  padding: 27px 30px 27px 0;
+  color: #000;
+}
+
+.search-form__checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.search-form__checkbox-visible {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 20px;
+  width: 36px;
+  box-sizing: content-box;
+  position: relative;
+  border-radius: 20px;
+  background-color: #2be080;
+  transition: 250ms;
+  cursor: pointer;
+  transform: rotate(180deg);
+}
+
+.search-form__checkbox-visible::before {
+  content: '';
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translate(0, -50%);
+  background-color: #fff;
+  transition: inherit;
+}
+
+.search-form__checkbox:focus+.search-form__checkbox-visible {
+  outline: 1px dotted #212121;
+  outline: 1px auto -webkit-focus-ring-color;
+}
+
+.search-form__checkbox:focus:not(:focus-visible)+.search-form__checkbox-visible {
+  outline: 0;
+}
+
+.search-form__checkbox:checked+.search-form__checkbox-visible {
+  background-color: #EBEBEB;
+}
+
+.search-form__checkbox:checked+.search-form__checkbox-visible::before {
+  transform: translate(100%, -50%);
+}
+
+@media screen and (max-width: 1023px) {
+  .search-form {
+    padding-top: 80px;
+    padding-bottom: 110px;
+  }
+
+  .search-form__icon {
+    margin-left: 27px;
+  }
+
+  .search-form__input {
+    padding: 16px 17px 16px 17px;
+  }
+
+  .search-form__divider {
+    margin-left: -5px;
+    margin-right: 29px;
+    right: -20px;
+  }
+
+  .search-form__filter {
+    padding: 16px 25px 16px 9px;
+  }
+}
+
+@media screen and (max-width: 631px) {
+  .search-form {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 67px;
+    padding-bottom: 110px;
+  }
+
+  .search-form__input {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 16px 87px 16px 19px;
+  }
+
+  .search-form__icon {
+    display: none;
+  }
+
+  .search-form__button {
+    position: absolute;
+    top: 50%;
+    right: 19px;
+    margin-top: -22px;
+    transform: translateY(-50%);
+    background-position: center right;
+    width: 80px;
+    height: 34px;
+    padding: 0;
+  }
+
+  .search-form__divider {
+    display: none;
+  }
+
+  .search-form__filter {
+    position: absolute;
+    top: 173px;
+    left: 50%;
+    padding: 0;
+    transform: translateX(-50%);
+  }
+
+  .search-form__filter-name {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+  }
+}

@@ -1,0 +1,171 @@
+.student {
+  box-sizing: border-box;
+}
+
+.student__title {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: -0.04em;
+  padding: 107px 0 23px 0;
+  border-bottom: solid 1px #000;
+  margin: 0 70px 0 70px;
+}
+
+.about-section {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 66px;
+}
+
+.about-section__text {
+  max-width: 600px;
+  margin: 0 70px 0 70px;
+}
+
+.about-section__title {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.about-section__subtitle {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20px;
+  mix-blend-mode: normal;
+  margin: 18px 0 26px 0;
+}
+
+.about-section__description {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  mix-blend-mode: normal;
+  margin-bottom: 99px;
+}
+
+.about-section__link {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration: none;
+  color: #000;
+}
+
+.about-section__photo-section {
+  margin-right: 70px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  max-width: 270px;
+  height: 327px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.about-section__photo {
+  border-radius: 10px;
+  object-fit: contain;
+  object-position: center;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1050px) {
+  .student__title {
+    padding-top: 90px;
+    margin: 0 50px 0 50px;
+  }
+
+  .about-section__text {
+    max-width: 364px;
+    margin: 0 50px 0 50px;
+  }
+
+  .about-section__title {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .about-section__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 16px 0 20px 0;
+  }
+
+  .about-section__description {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 87px;
+  }
+
+  .about-section__photo-section {
+    margin-right: 50px;
+    max-width: 255px;
+    height: 307px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .student {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .student__title {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 70px 0 28px 0;
+    margin: 0 14px 0 14px;
+  }
+
+  .about-section {
+    flex-direction: column;
+    padding-top: 60px;
+  }
+
+  .about-section__text {
+    max-width: 292px;
+    margin: 0 14px 0 14px;
+    order: 2;
+  }
+
+  .about-section__title {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .about-section__subtitle {
+    font-size: 11px;
+    line-height: 16px;
+    margin: 20px 0 20px 0;
+  }
+
+  .about-section__description {
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 40px;
+  }
+
+  .about-section__photo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 14px 40px 14px;
+    max-width: 292px;
+    height: 352px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .student__title {
+    padding: 61px 0 28px 0;
+  }
+
+  .about-section__photo-section {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+}

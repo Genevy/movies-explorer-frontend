@@ -1,0 +1,129 @@
+.portfolio {
+  box-sizing: border-box;
+  margin-bottom: 125px;
+}
+
+.portfolio__title {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #a0a0a0;
+  mix-blend-mode: normal;
+  padding: 100px 0 50px 0;
+  margin: 0 70px 0 70px;
+}
+
+.portfolio__projects {
+  margin: 0 70px 0 70px;
+  padding: 0;
+}
+
+.portfolio__project {
+  list-style: none;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-bottom: 19px;
+  border-bottom: solid 1px #e8e8e8;
+  margin: 20px 0 0;
+}
+
+.portfolio__project:last-of-type {
+  padding-bottom: 0;
+  border: none;
+}
+
+.portfolio__project:first-of-type {
+  margin: 0;
+}
+
+.portfolio__subtitle {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.portfolio__link {
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin-right: 7px;
+}
+
+.portfolio__picture {
+  object-fit: contain;
+}
+
+@media screen and (max-width: 1150px) {
+  .portfolio {
+    margin-bottom: 90px;
+  }
+
+  .portfolio__title {
+    padding-top: 90px;
+    margin: 0 50px 0 50px;
+  }
+
+  .portfolio__projects {
+    margin: 0 50px 0 50px;
+    padding: 0;
+  }
+
+  .portfolio__subtitle {
+    font-size: 28px;
+  }
+
+  .portfolio__picture {
+    margin-top: 5px;
+    margin-left: 3px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .portfolio {
+    margin-bottom: 70px;
+  }
+
+  .portfolio__title {
+    font-size: 14px;
+    padding: 70px 0 40px 0;
+    margin: 0 14px 0 14px;
+  }
+
+  .portfolio__projects {
+    margin: 0 14px 0 14px;
+  }
+
+  .portfolio__subtitle {
+    font-size: 18px;
+  }
+
+  .portfolio__link {
+    height: 28px;
+  }
+
+  .portfolio__picture {
+    width: 12px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .portfolio__title {
+    padding: 68px 0 44px 0;
+  }
+
+  .portfolio__projects {
+    margin-top: -3px;
+  }
+
+  .portfolio__picture {
+    margin-top: 0px;
+    margin-right: -3px;
+  }
+}
