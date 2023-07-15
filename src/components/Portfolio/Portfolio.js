@@ -39,7 +39,7 @@ function Portfolio() {
         <li className='portfolio__project'>
           <NavLink
             className='portfolio__link hover-link'
-            to='https://github.com/Genevy/react-mesto-api-full-gha'
+            to='https://github.com/Genevy/react-mesto-auth'
             target='_blank'
             rel='noopener noreferrer'
           >

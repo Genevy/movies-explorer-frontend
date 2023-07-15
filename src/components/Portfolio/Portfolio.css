@@ -112,3 +112,18 @@
     width: 12px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .portfolio__title {
+    padding: 68px 0 44px 0;
+  }
+
+  .portfolio__projects {
+    margin-top: -3px;
+  }
+
+  .portfolio__picture {
+    margin-top: 0px;
+    margin-right: -3px;
+  }
+}

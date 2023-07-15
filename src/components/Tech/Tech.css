@@ -134,3 +134,12 @@
     margin-right: 0;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .tech__title {
+    letter-spacing: -0.72px;
+    line-height: normal;
+    padding: 38px 0 28px 0;
+
+  }
+}

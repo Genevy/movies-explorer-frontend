@@ -16,26 +16,20 @@ function MoviesCard(props) {
     setLike(!isLiked);
   }
 
-  const cardLikeButtonClassName = `movie__like hover-button ${isLiked ? 'movie__like_active' : ''
-    }`;
+  const cardButtonClassName = location.pathname === '/saved-movies'
+    ? 'movie__remove hover-button'
+    : `movie__like hover-button ${isLiked ? 'movie__like_active' : ''}`;
 
   return (
     <li className='movie'>
       <div className='movie__header'>
         <h2 className='movie__title'>{props.card.nameRU}</h2>
 
-        {location.pathname === '/movies' ? (
-          <button
-            className={cardLikeButtonClassName}
-            type='button'
-            onClick={handleCardLike}
-          ></button>
-        ) : (
-          <button
-            className='movie__like-delete hover-button'
-            type='button'
-          ></button>
-        )}
+        <button
+          className={cardButtonClassName}
+          type='button'
+          onClick={handleCardLike}
+        ></button>
       </div>
       <p className='movie__duration'>{getTimeFromMins(props.card.duration)}</p>
       <img

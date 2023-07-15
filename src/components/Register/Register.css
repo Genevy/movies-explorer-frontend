@@ -1,3 +1,9 @@
 .auth__submit-button.reg_button {
     margin-top: 135px;
 }
+
+@media screen and (max-width: 320px) {
+    .auth__submit-button.reg_button {
+        margin-top: 228px;
+    }
+}

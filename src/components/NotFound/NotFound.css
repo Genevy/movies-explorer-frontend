@@ -47,8 +47,10 @@
 @media screen and (max-width: 600px) {
   .not-found__title {
     font-size: 80px;
-    line-height: 97px;
-    padding: 329px 10 10px 10px;
+    line-height: normal;
+    margin-top: -80px;
+    margin-bottom: 5px;
+
   }
 
   .not-found__subtitle {

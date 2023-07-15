@@ -12,7 +12,7 @@
   justify-content: space-between;
   width: 100%;
   margin: 0;
-  transition: right .35s linear;
+  transition: right .3s linear;
 }
 
 .menu__burger-button {
@@ -121,7 +121,7 @@
     align-items: flex-end;
     flex-grow: 1;
     z-index: 2;
-    transition: background-color .35s linear;
+    transition: background-color .3s linear;
   }
 
   .menu__content {
@@ -218,6 +218,7 @@
   .menu__burger-button {
     width: 40px;
     height: 43px;
+    margin-right: 30px;
   }
 
   .menu__main {
@@ -225,15 +226,15 @@
   }
 
   .menu__burger-button_close {
-    top: 13px;
-    right: 13px;
+    top: 18px;
+    right: 18px;
   }
 
   .menu__movies {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 24px 0 24px 0;
+    padding: 20px 0 20px 0;
   }
 
   .menu__movies-all {
@@ -242,14 +243,20 @@
     line-height: 22px;
   }
 
+  .menu__movies-all.active {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
   .menu__movies-saved {
     font-weight: 500;
     font-size: 18px;
-    line-height: 22px;
+    line-height: normal;
+    margin-top: -5px;
   }
 
   .menu__account {
     padding: 0;
-    margin: auto 0 48px 0;
+    margin: auto 0 130px 0;
   }
 }

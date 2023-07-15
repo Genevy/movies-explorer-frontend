@@ -61,7 +61,7 @@
   display: block;
 }
 
-.movie__like-delete {
+.movie__remove {
   background-image: url(../../images/delete_card.svg);
   display: block;
   width: 30px;
@@ -75,7 +75,7 @@
 
 @media screen and (max-width: 1000px) {
   .movie__picture {
-    height: 198px;
+    height: 190px;
   }
 
   .movie {
@@ -93,18 +93,25 @@
   }
 
   .movie__header {
-    padding: 7px 10px 6px 10px;
+    padding: 7px 6px 6px 14px;
   }
 
   .movie__duration {
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 12px;
+    font-size: 11px;
+    line-height: normal;
+    margin-top: 0px;
   }
 
   .movie__title {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
+    font-size: 15px;
+    line-height: normal;
+  }
+
+  .movie__like {
+    margin-right: 10px;
+  }
+
+  .movie__remove {
+    margin-right: 10px;
   }
 }

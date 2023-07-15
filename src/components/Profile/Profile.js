@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Profile() {
   // временные значения
-  const userName = 'Евгений';
+  const userName = 'Виталий';
   const [name, setName] = useState(userName);
   const [email, setEmail] = useState('pochta@yandex.ru');
 
@@ -48,9 +48,7 @@ function Profile() {
             value={email || ''}
             onChange={handleChangeEmail}
           />
-          <span className='profile__input-error'>
-            Пользователь с таким email уже существует.
-          </span>
+          <span className='profile__input-error'></span>
         </label>
       </form>
 

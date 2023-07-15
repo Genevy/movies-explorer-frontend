@@ -110,3 +110,17 @@
     text-align: center;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .footer__title {
+    margin-left: 0;
+  }
+
+  .footer__links {
+    margin-right: 0px;
+  }
+
+  .footer__year {
+    margin-left: 0px;
+  }
+}

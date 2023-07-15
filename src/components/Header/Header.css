@@ -19,7 +19,11 @@
 
 @media screen and (max-width: 1140px) {
   .header {
-    padding: 16px 30px;
+    padding: 0 0 0 30px;
+  }
+
+  .header_type_landing {
+    padding: 18px 30px;
   }
 }
 
@@ -32,13 +36,27 @@
     padding: 18px 0 18px 30px;
   }
 
+  .header_type_profile {
+    margin-top: -18px;
+  }
+
   .header_menu-opened {
     padding: 16px 30px;
+    margin-bottom: 1px;
   }
 }
 
 @media screen and (max-width: 320px) {
   .header {
     padding: 18px 0 14px 14px;
+  }
+
+  .header_type_movies {
+    margin-top: -18px;
+  }
+
+  .header_menu-opened {
+    margin-top: -2px;
+    margin-bottom: 17px;
   }
 }

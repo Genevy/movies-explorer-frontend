@@ -33,7 +33,6 @@ function SearchForm() {
           <p className='search-form__filter-name'>Короткометражки</p>
         </label>
       </form>
-
     </section>
   );
 }

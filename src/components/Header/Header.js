@@ -21,7 +21,7 @@ function Header() {
         exact
         path='/movies/*'
         element={
-          <header className='header'>
+          <header className='header header_type_movies'>
             <Logo />
             <Burger />
           </header>
@@ -32,7 +32,7 @@ function Header() {
         exact
         path='/saved-movies/*'
         element={
-          <header className='header'>
+          <header className='header header_type_movies'>
             <Logo />
             <Burger />
           </header>
@@ -43,7 +43,7 @@ function Header() {
         exact
         path='/profile'
         element={
-          <header className='header'>
+          <header className='header header_type_profile'>
             <Logo />
             <Burger />
           </header>

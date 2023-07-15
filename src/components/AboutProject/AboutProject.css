@@ -70,6 +70,7 @@
 }
 
 .about__part {
+  font-family: "Suisse Intl", sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
@@ -167,5 +168,6 @@
   .about__part {
     font-size: 11px;
     line-height: normal;
+    margin-top: 9px;
   }
 }

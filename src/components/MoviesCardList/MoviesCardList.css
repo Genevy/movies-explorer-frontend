@@ -34,13 +34,18 @@
 @media screen and (max-width: 1200px) {
   .movies-list__grid {
     grid-column-gap: 30px;
-    grid-row-gap: 30px;
+    grid-row-gap: 36px;
   }
 }
 
 @media screen and (max-width: 400px) {
   .movies-list__grid {
+    margin-top: 8px;
     padding-top: 40px;
-    grid-row-gap: 14px;
+    grid-row-gap: 16px;
+  }
+
+  .movies-list__more-button {
+    max-width: 240px;
   }
 }
