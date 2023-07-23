@@ -6,7 +6,7 @@
 
 <br>
 <p align="center">
-MJVIES EXPLOTER - СЕРВИС ПОИСКА ФИЛЬМОВ
+MOVIES EXPLOTER - СЕРВИС ПОИСКА ФИЛЬМОВ
 </p>
 <br>
 
