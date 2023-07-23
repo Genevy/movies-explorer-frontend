@@ -15,8 +15,8 @@ function AuthForm({
   onSubmit,
   toggleSubmit,
 }) {
-  const [ isFetching, setIsFetching ] = useState(false);
-  const [ serverErrorMessage, setServerErrorMessage ] = useState('');
+  const [isFetching, setIsFetching] = useState(false);
+  const [serverErrorMessage, setServerErrorMessage] = useState('');
   const handleSubmit = event => {
     setIsFetching(true);
     event.preventDefault();
@@ -24,17 +24,18 @@ function AuthForm({
       .then(() => setServerErrorMessage(''))
       .catch((errCode) => {
         if (errCode === 400) {
-          setServerErrorMessage(errorMesages.validatinError);
+          return setServerErrorMessage(errorMesages.validatinError);
         }
         if (errCode === 401) {
-          setServerErrorMessage(errorMesages.badData);
+          return setServerErrorMessage(errorMesages.badData);
         }
         if (errCode === 409) {
-          setServerErrorMessage(errorMesages.duplicateEmail);
+          return setServerErrorMessage(errorMesages.duplicateEmail);
         }
         if (errCode === 500) {
-          setServerErrorMessage(errorMesages.serverError);
+          return setServerErrorMessage(errorMesages.serverError);
         }
+        setServerErrorMessage(errorMesages.someError);
       })
       .finally(() => setIsFetching(false));
   }
@@ -44,24 +45,24 @@ function AuthForm({
       <h1 className='auth__title'>{title}</h1>
       <form className='auth__form' onSubmit={handleSubmit} noValidate>
         {children}
-      <span className="auth__submit-error">{serverErrorMessage}</span>
-      <button
-        className='auth__submit-button hover-button'
-        type='submit'
-        disabled={(!isFetching && !toggleSubmit)}
-      >
-        {buttonText}
-      </button>
-
-      <p className='auth__text'>
-        {subtitle}
-        <Link
-          className='auth__link hover-link'
-          to={link}
+        <span className="auth__submit-error">{serverErrorMessage}</span>
+        <button
+          className='auth__submit-button hover-button'
+          type='submit'
+          disabled={(!isFetching && !toggleSubmit)}
         >
-          {linkName}
-        </Link>
-      </p>
+          {buttonText}
+        </button>
+
+        <p className='auth__text'>
+          {subtitle}
+          <Link
+            className='auth__link hover-link'
+            to={link}
+          >
+            {linkName}
+          </Link>
+        </p>
       </form>
     </section>
   );

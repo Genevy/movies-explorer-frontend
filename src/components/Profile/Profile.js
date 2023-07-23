@@ -1,18 +1,18 @@
-import { useContext, useEffect, useState } from 'react'; 
+import { useContext, useEffect, useState } from 'react';
 import './Profile.css';
 import initValidState from '../../utils/initValidState';
 import useValidation from '../../customHooks/useValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import errorMesages from '../../utils/errorMesages';
 
-function Profile({onSubmit, onLogout}) {
-  const [ isEditMode, setIsEditMode ] = useState(false);
-  const [ serverErrorMessage, setServerErrorMessage ] = useState('');
-  const [ isFetching, setIsFetching ] = useState(false);
+function Profile({ onSubmit, onLogout }) {
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [serverErrorMessage, setServerErrorMessage] = useState('');
+  const [isFetching, setIsFetching] = useState(false);
   const currentUser = useContext(CurrentUserContext);
   const { formValues, handleChange, resetForm } = useValidation({
-    name: {...initValidState, value: currentUser.name },
-    email: {...initValidState, value: currentUser.email },
+    name: { ...initValidState, value: currentUser.name },
+    email: { ...initValidState, value: currentUser.email },
   });
   const isNotValidInput = !formValues.name.isValid() && !formValues.email.isValid();
   const isNotEditedUserData = formValues.name.value === currentUser.name && formValues.email.value === currentUser.email;
@@ -28,14 +28,15 @@ function Profile({onSubmit, onLogout}) {
       .then(() => setIsEditMode(false))
       .catch((errCode) => {
         if (errCode === 400) {
-          setServerErrorMessage(errorMesages.editUserError);
+          return setServerErrorMessage(errorMesages.editUserError);
         }
         if (errCode === 409) {
-          setServerErrorMessage(errorMesages.duplicateEmail);
+          return setServerErrorMessage(errorMesages.duplicateEmail);
         }
         if (errCode === 500) {
-          setServerErrorMessage(errorMesages.serverError);
+          return setServerErrorMessage(errorMesages.serverError);
         }
+        setServerErrorMessage(errorMesages.someError);
       })
       .finally(() => setIsFetching(false));;
   }
@@ -44,17 +45,17 @@ function Profile({onSubmit, onLogout}) {
     setIsEditMode(true)
   };
   useEffect(() => resetForm({
-    name: {...initValidState, value: currentUser.name },
-    email: {...initValidState, value: currentUser.email },
+    name: { ...initValidState, value: currentUser.name },
+    email: { ...initValidState, value: currentUser.email },
   }), [currentUser]);
   return (
     <main className='profile'>
       <h2 className='profile__title'>{`Привет, ${currentUser.name}!`}</h2>
 
       <form
-      className='profile__form'
-      onSubmit={handleSubmit}
-      noValidate
+        className='profile__form'
+        onSubmit={handleSubmit}
+        noValidate
       >
         <label className='profile__label'>
           Имя
@@ -86,21 +87,21 @@ function Profile({onSubmit, onLogout}) {
           />
           <span className='profile__input-error'>{formValues.email.validationMessage}</span>
         </label>
-        {isEditMode && 
+        {isEditMode &&
           <>
-          <span className="profile__error">{serverErrorMessage}</span>
-          <button
-            className='profile__button hover-button profile__button_type_submit'
-            type="submit"
-            disabled={toggleSubmit}
-          >
-            Сохранить
-          </button>
+            <span className="profile__error">{serverErrorMessage}</span>
+            <button
+              className='profile__button hover-button profile__button_type_submit'
+              type="submit"
+              disabled={toggleSubmit}
+            >
+              Сохранить
+            </button>
           </>
         }
       </form>
 
-      {!isEditMode && 
+      {!isEditMode &&
         <>
           <button
             className='profile__button profile__button_type_change hover-button'
