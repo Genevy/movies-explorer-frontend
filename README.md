@@ -43,6 +43,16 @@ Figma [Layout](https://github.com/Genevy/storage/raw/dev/figma/Diploma_Genevy.fi
 
 Link to [pull request](https://github.com/Genevy/movies-explorer-frontend/pull/1)
 
+Link to [Github repository](https://github.com/Genevy/movies-explorer-frontend)
+
+<br>
+
+IP 84.201.128.242
+
+Backend domain https://api.movies.genevy.nomoreparties.sbs
+
+Frontend domain https://movies.genevy.nomoreparties.sbs
+
 <br>
 
 ##
