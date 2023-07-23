@@ -1,16 +1,17 @@
 import React from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import './SavedMovies.css';
 
-function SavedMovies({ list }) {
-  const moviesFilter = list.filter((item) => !item.owner);
+function SavedMovies({ movies, findedMovies, onDelete, ...props }) {
 
   return (
     <main className='saved-movies'>
-      <SearchForm />
+      <SearchForm  { ...props } />
       <MoviesCardList
-        list={moviesFilter}
+        findedMovies={findedMovies}
         savedmovies={true} // Отключаем кнопку "Ещё" согласно макету ДР
+        onDelete={onDelete} 
       />
     </main>
   );

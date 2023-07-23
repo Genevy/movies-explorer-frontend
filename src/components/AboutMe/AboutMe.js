@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import './AboutMe.css';
 import myPhoto from '../../images/genevy.jpg';
 import myPhotoHover from '../../images/genevy_hover.jpg';
 

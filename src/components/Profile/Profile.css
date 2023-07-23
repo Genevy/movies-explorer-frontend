@@ -30,11 +30,16 @@
   overflow: hidden;
   border-bottom: 1px solid #e8e8e8;
   padding-bottom: 16px;
+  transition: border-bottom-color .3s linear;
 }
 
 .profile__label:last-of-type {
-  border-bottom: none;
+  border-bottom-color: transparent;
   padding-top: 17px;
+}
+
+.profile__label:focus-within {
+  border-bottom-color: #3456F3;
 }
 
 .profile__input {
@@ -50,13 +55,16 @@
   border-bottom: 1px solid transparent;
 }
 
+.profile__input:disabled {
+  background-color: transparent;
+}
+
 .profile__input:invalid {
   color: #ff4062;
 }
 
 .profile__input:focus {
   outline: none;
-  border-bottom: 1px solid #2BE080;
 }
 
 .profile__input-error {
@@ -69,6 +77,19 @@
   line-height: 12px;
 }
 
+.profile__error {
+  color: #FF004C;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 100%;
+  display: inline-block;
+  margin: 169px 0 0;
+}
+
+
 .profile__button {
   font-weight: 400;
   font-size: 13px;
@@ -76,6 +97,30 @@
   border: none;
   background-color: transparent;
   padding: 0;
+  outline: none;
+}
+
+.profile__button_type_submit {
+  display: block;
+  box-sizing: border-box;
+  height: 45px;
+  width: 100%;
+  border-radius: 3px;
+  background-color: #2BE080;
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  min-height: 13px;
+  margin: 20px 0 16px 0;
+  transition: all .3s linear;
+}
+
+.profile__button_type_submit:disabled {
+  background-color: #F8F8F8;
+  color: #C2C2C2;
 }
 
 .profile__button_type_change {

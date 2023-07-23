@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Burger.css';
 import { NavLink } from 'react-router-dom';
 
 function Burger() {

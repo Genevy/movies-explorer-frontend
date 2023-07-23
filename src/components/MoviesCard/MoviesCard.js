@@ -1,8 +1,11 @@
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import './MoviesCard.css';
 
 function MoviesCard(props) {
+  const isLiked = props.checkIsLiked ? props.checkIsLiked(props.card) : true;
   const location = useLocation();
+
+
 
   function getTimeFromMins(mins) {
     let hours = Math.trunc(mins / 60);
@@ -10,11 +13,14 @@ function MoviesCard(props) {
     return `${hours}ч ${minutes}м`;
   }
 
-  const [isLiked, setLike] = useState(false);
-
   function handleCardLike() {
-    setLike(!isLiked);
+    if (isLiked) {
+      props.onDelete(props.card);
+    } else {
+      props.onSave(props.card);
+    }
   }
+
 
   const cardButtonClassName = location.pathname === '/saved-movies'
     ? 'movie__remove hover-button'
@@ -32,11 +38,13 @@ function MoviesCard(props) {
         ></button>
       </div>
       <p className='movie__duration'>{getTimeFromMins(props.card.duration)}</p>
-      <img
-        className='movie__picture'
-        src={props.card.image}
-        alt='Фильм'
-      />
+      <Link className="hover-link" to={props.card.trailerLink} target="_blank" rel="noopener noreferrer">
+        <img
+          className='movie__picture'
+          src={props.card.image}
+          alt='Фильм'
+        />
+      </Link>
     </li>
   );
 }
