@@ -1,9 +1,10 @@
+import { Navigate } from 'react-router-dom';
 import useValidation from '../../customHooks/useValidation';
 import initValidState from '../../utils/initValidState';
 import AuthForm from '../AuthForm/AuthForm';
 import './Login.css'
 
-function Login({ onSubmit }) {
+function Login({ onSubmit, isLoggedIn }) {
   const { formValues, handleChange } = useValidation({
     email: initValidState,
     password: initValidState,
@@ -14,6 +15,8 @@ function Login({ onSubmit }) {
       password: formValues.password.value,
     });
   }
+  if (isLoggedIn) return ( <Navigate to={'/'} replace /> )
+  
   return (
     <AuthForm
       link='/signup'
@@ -30,7 +33,7 @@ function Login({ onSubmit }) {
           id='email'
           name='email'
           type='email'
-          className='auth__input'
+          className={`auth__input${formValues.email.isValid() ? ' auth__input_valid' : ' auth__input_invalid'}` }
           placeholder='Введите email'
           required
           value={formValues.email.value}

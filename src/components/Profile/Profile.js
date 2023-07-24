@@ -10,23 +10,37 @@ function Profile({ onSubmit, onLogout }) {
   const [serverErrorMessage, setServerErrorMessage] = useState('');
   const [isFetching, setIsFetching] = useState(false);
   const currentUser = useContext(CurrentUserContext);
+  const [isSuccess, setIsSuccess] = useState(true);
   const { formValues, handleChange, resetForm } = useValidation({
     name: { ...initValidState, value: currentUser.name },
     email: { ...initValidState, value: currentUser.email },
   });
-  const isNotValidInput = !formValues.name.isValid() && !formValues.email.isValid();
+  const isValidInput = formValues.name.isValid() && formValues.email.isValid();
   const isNotEditedUserData = formValues.name.value === currentUser.name && formValues.email.value === currentUser.email;
-  const toggleSubmit = isNotEditedUserData || (!isFetching && isNotValidInput);
+  const toggleSubmit = isNotEditedUserData || !isValidInput || isFetching;
+  console.log(isNotEditedUserData, 'isEditedUserData');
+  console.log(isFetching, 'isFetching');
+  console.log(toggleSubmit, 'toggleSubmit');
+  console.log(formValues.name.isValid(), formValues.email.isValid());
+
+  
+  
 
   const handleSubmit = (event) => {
     setIsFetching(true);
+    setServerErrorMessage('');
     event.preventDefault();
     onSubmit({
       name: formValues.name.value,
       email: formValues.email.value,
     })
-      .then(() => setIsEditMode(false))
+      .then(() => {
+        setIsSuccess(true);
+        setServerErrorMessage(errorMesages.successUserProfileUpdateMessege);
+        setIsEditMode(false)
+      })
       .catch((errCode) => {
+        setIsSuccess(false)
         if (errCode === 400) {
           return setServerErrorMessage(errorMesages.editUserError);
         }
@@ -42,11 +56,12 @@ function Profile({ onSubmit, onLogout }) {
   }
 
   const handleEditMode = () => {
-    setIsEditMode(true)
+    setIsEditMode(true);
+    setServerErrorMessage('');
   };
   useEffect(() => resetForm({
-    name: { ...initValidState, value: currentUser.name },
-    email: { ...initValidState, value: currentUser.email },
+    name: { ...initValidState, value: currentUser.name, isDirty: true },
+    email: { ...initValidState, value: currentUser.email, isDirty: true },
   }), [currentUser]);
   return (
     <main className='profile'>
@@ -87,9 +102,9 @@ function Profile({ onSubmit, onLogout }) {
           />
           <span className='profile__input-error'>{formValues.email.validationMessage}</span>
         </label>
+        <span className={`profile__span${isSuccess ? '' : ' profile__span_error'}`}>{serverErrorMessage}</span>
         {isEditMode &&
           <>
-            <span className="profile__error">{serverErrorMessage}</span>
             <button
               className='profile__button hover-button profile__button_type_submit'
               type="submit"

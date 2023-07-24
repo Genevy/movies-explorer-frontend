@@ -38,14 +38,14 @@ function Burger() {
         <div className='menu__movies'>
           <NavLink
             to='/movies'
-            className='menu__movies-all hover-link'
+            className={({isActive}) => 'menu__movies-link' + (isActive ? ' menu__movies-link_active' : '')}
             onClick={handleClickMenu}
           >
             Фильмы
           </NavLink>
           <NavLink
             to='/saved-movies'
-            className='menu__movies-saved hover-link'
+            className={({isActive}) => 'menu__movies-link' + (isActive ? ' menu__movies-link_active' : '')}
             onClick={handleClickMenu}
           >
             Сохраненные фильмы

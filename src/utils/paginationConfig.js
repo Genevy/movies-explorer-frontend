@@ -1,16 +1,16 @@
-const paginationConfig = {
-	pc: {
-		initMoviesQuanity: 12,
-		moviesOnRow: 3,
+const PAGINATION_CONFIG = {
+	PC: {
+		INIT_MOVIES_QUANITY: 12,
+		MOVIES_ON_ROW: 3,
 	},
-	tablet: {
-		initMoviesQuanity: 8,
-		moviesOnRow: 2,
+	TABLET: {
+		INIT_MOVIES_QUANITY: 8,
+		MOVIES_ON_ROW: 2,
 	},
-	mobile: {
-		initMoviesQuanity: 5,
-		moviesOnRow: 2,
+	MOBILE: {
+		INIT_MOVIES_QUANITY: 5,
+		MOVIES_ON_ROW: 2,
 	},
 }
 
-export default paginationConfig;
+export default PAGINATION_CONFIG;

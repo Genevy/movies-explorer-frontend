@@ -4,7 +4,7 @@ const initValidState = {
 	isValidValue: true,
 	isEmpty: true,
 	isDirty: false,
-	isValid: () => false,
+	isValid: () => true,
 }
 
 export default initValidState;

@@ -14,8 +14,6 @@ function useValidation (initValues) {
 				isValidValue: input.type === 'email' ? isEmail(input.value) : input.checkValidity(),
 				isEmpty: input.value.length === 0,
 				isDirty: true,
-				isEmail: input.type === 'email' && !isEmail(input.value),
-				isTypeEmail: input.type === 'email',
 				isValid: function () {
 					return (this.isValidValue && this.isDirty);
 				}

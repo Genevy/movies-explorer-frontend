@@ -146,7 +146,11 @@ function App() {
   };
   const filterAllMovies = () => {
     const filteredMovies = filterMovies(moviesFormValue.search.value, isShortMovies, allMovies);
-    if (filteredMovies.length === 0) setSearchMoviesText('По вашему запросу ничего не найдено');;
+    if (filteredMovies.length === 0) {
+      setSearchMoviesText('По вашему запросу ничего не найдено')
+    } else if (!moviesFormValue.search.value) {
+      setSearchMoviesText('Нужно ввести ключевое слово')
+    }
     setFindedMovies(filteredMovies);
   };
   const filterUserMovies = () => {
@@ -168,9 +172,10 @@ function App() {
 
   useEffect(() => {
     if (!isLoggedIn) return;
-    if (allMovies.length === 0 && !moviesFormValue.search.value) return setSearchMoviesText('Введите поисковый запрос');
-    if (!moviesFormValue.search.value) return setSearchMoviesText('Введите поисковый запрос');
+    // if (allMovies.length === 0 && !moviesFormValue.search.value) return setSearchMoviesText('Введите поисковый запрос');
+    // if (!moviesFormValue.search.value) return setSearchMoviesText('Введите поисковый запрос');
     // if (moviesFormValue.search.value) setSearchMoviesText('Осуществите поиск');
+    // if (allMovies.length > 0 && !isFirstSearch && moviesFormValue.search.value) {
     if (allMovies.length > 0 && !isFirstSearch && moviesFormValue.search.value) {
       setSearchMoviesText('Осуществите поиск');
     }
@@ -312,8 +317,8 @@ function App() {
               />
             }
           />
-          <Route path='/signin' element={<Login onSubmit={handleLogin} />} />
-          <Route path='/signup' element={<Register onSubmit={handleRegister} />} />
+          <Route path='/signin' element={<Login onSubmit={handleLogin} isLoggedIn={isLoggedIn} />} />
+          <Route path='/signup' element={<Register onSubmit={handleRegister} isLoggedIn={isLoggedIn} />} />
           <Route path='*' element={<NotFound goBack={goBack} />} />
         </Routes>
 

@@ -7,6 +7,7 @@ const errorMesages = {
   duplicateEmail: 'Пользователь с таким email уже существует.',
   serverError: 'На сервере произошла ошибка.',
   someError: 'Что-то пошло не так, попробуйте позже',
+  successUserProfileUpdateMessege: 'Профиль успешно обновлён'
 }
 
 export default errorMesages;

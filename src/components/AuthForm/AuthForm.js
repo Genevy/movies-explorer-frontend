@@ -10,7 +10,6 @@ function AuthForm({
   linkName,
   title,
   subtitle,
-  isValid,
   children,
   onSubmit,
   toggleSubmit,
@@ -20,6 +19,7 @@ function AuthForm({
   const handleSubmit = event => {
     setIsFetching(true);
     event.preventDefault();
+    setServerErrorMessage('');
     onSubmit()
       .then(() => setServerErrorMessage(''))
       .catch((errCode) => {
@@ -49,7 +49,7 @@ function AuthForm({
         <button
           className='auth__submit-button hover-button'
           type='submit'
-          disabled={(!isFetching && !toggleSubmit)}
+          disabled={(!toggleSubmit || isFetching)}
         >
           {buttonText}
         </button>

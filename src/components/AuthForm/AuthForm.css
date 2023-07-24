@@ -53,16 +53,16 @@
   border-bottom-color: #878787;
 }
 
-.auth__input:invalid {
-  color: #f00;
-}
 
-
-
-.auth__input:valid {
+.auth__input:valid, .auth__input_valid {
   outline: none;
   border-bottom: 1px solid #2BE080;
 }
+
+.auth__input:invalid, .auth__input_invalid {
+  color: #f00;
+}
+
 
 .auth__input-error {
   position: absolute;

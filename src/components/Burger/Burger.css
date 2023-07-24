@@ -67,8 +67,8 @@
   padding-left: 44px;
 }
 
-.menu__movies-all {
-  font-weight: 500;
+.menu__movies-link {
+  font-weight: 400;
   font-size: 13px;
   line-height: 18px;
   color: #000;
@@ -76,13 +76,10 @@
   padding-right: 16px;
 }
 
-.menu__movies-saved {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 18px;
-  color: #000;
-  text-decoration: none;
+.menu__movies-link_active {
+  font-weight: 500;
 }
+
 
 .menu__account {
   display: flex;

@@ -1,9 +1,10 @@
+import { Navigate } from 'react-router-dom';
 import useValidation from '../../customHooks/useValidation';
 import initValidState from '../../utils/initValidState';
 import AuthForm from '../AuthForm/AuthForm';
 import './Register.css';
 
-function Register({ onSubmit }) {
+function Register({ onSubmit, isLoggedIn }) {
   const { formValues, handleChange } = useValidation({
     name: initValidState,
     email: initValidState,
@@ -16,6 +17,7 @@ function Register({ onSubmit }) {
       password: formValues.password.value,
     });
   };
+  if (isLoggedIn) return ( <Navigate to={'/'} replace /> )
   return (
     <AuthForm
       link='/signin'
@@ -32,7 +34,7 @@ function Register({ onSubmit }) {
           id='name'
           name='name'
           type='name'
-          className='auth__input'
+          className={`auth__input${formValues.email.isValid() ? ' auth__input_valid' : ' auth__input_invalid'}` }
           placeholder='Введите имя'
           minLength='2'
           maxLength='40'
