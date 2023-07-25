@@ -36,6 +36,7 @@ function AuthForm({
           return setServerErrorMessage(errorMesages.serverError);
         }
         setServerErrorMessage(errorMesages.someError);
+        console.log(errCode);
       })
       .finally(() => setIsFetching(false));
   }

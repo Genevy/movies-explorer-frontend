@@ -3,7 +3,7 @@ import useWidth from '../../customHooks/useWidth';
 import './Movies.css'
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import { PC, TABLET, MOBILE, } from '../../utils/moviesParams';
+import { MIN_DESKTOP_WIDTH, MIN_TABLET_WIDTH, PAGINATION_CONFIG } from '../../utils/moviesParams';
 
 function Movies({ movies, isLoading, findedMovies, onSave, checkIsLiked, onDelete, searchMessage, ...props }) {
   const [ sliceNumber, setSliceNumber ] = useState(0); // отображаемое количество фильмов
@@ -15,15 +15,15 @@ function Movies({ movies, isLoading, findedMovies, onSave, checkIsLiked, onDelet
   const width = useWidth();
 
   const handleWidthResize = () => {
-    if (width > 932) {
-      setMoviesQuanityOnRow(PC.MOVIES_ON_ROW);
-      setInitMoviesQuanity(PC.INIT_MOVIES_QUANITY);
-    } else if (width > 648 ) {
-      setMoviesQuanityOnRow(TABLET.MOVIES_ON_ROW);
-      setInitMoviesQuanity(TABLET.INIT_MOVIES_QUANITY);
+    if (width > MIN_DESKTOP_WIDTH) {
+      setMoviesQuanityOnRow(PAGINATION_CONFIG.DESKTOP.MOVIES_ON_ROW);
+      setInitMoviesQuanity(PAGINATION_CONFIG.DESKTOP.INIT_MOVIES_QUANITY);
+    } else if (width > MIN_TABLET_WIDTH ) {
+      setMoviesQuanityOnRow(PAGINATION_CONFIG.TABLET.MOVIES_ON_ROW);
+      setInitMoviesQuanity(PAGINATION_CONFIG.TABLET.INIT_MOVIES_QUANITY);
     } else {
-      setMoviesQuanityOnRow(MOBILE.MOVIES_ON_ROW);
-      setInitMoviesQuanity(MOBILE.INIT_MOVIES_QUANITY);
+      setMoviesQuanityOnRow(PAGINATION_CONFIG.MOBILE.MOVIES_ON_ROW);
+      setInitMoviesQuanity(PAGINATION_CONFIG.MOBILE.INIT_MOVIES_QUANITY);
     }
   };
   const handleMoviesQuanity = () => setSliceNumber(initMoviesQuanity); 

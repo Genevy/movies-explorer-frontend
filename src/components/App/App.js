@@ -61,6 +61,28 @@ function App() {
     }
   });
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setCurrentUser({ email: '', name: '' });
+    setUserMovies([]);
+    setAllMovies([]);
+    setFindedMovies([]);
+    setFindedUserMovies([])
+    setIsShortMovies(false);
+    setIsShortUserMovies(false);
+    resetMoviesForm({ search: initValidState });
+    resetUserMoviesForm({ search: initValidState });
+    setIsFirstSearch(true);
+    localStorage.clear();
+    mainApi.setAuthHeaders(null);
+  };
+
+
+  const errorHandler = (errCode) => {
+    if (errCode=== 401) handleLogout();
+    console.log(errCode);
+  }
+
   // проверка токена
   const checkToken = () => {
     mainApi.getUserInfo()
@@ -69,6 +91,7 @@ function App() {
           setIsLoggedIn(true);
         }
       })
+      .catch(errorHandler)
       .finally(() => setIsLoading(false));
   };
 
@@ -90,6 +113,8 @@ function App() {
       const allMoviesFromStorage =  JSON.parse(localStorage.getItem('movies'));
       if (allMoviesFromStorage) {
         setAllMovies(allMoviesFromStorage);
+      } else {
+        setSearchMoviesText('Нужно ввести ключевое слово');
       }
       if (lastSearch) {
         setIsFirstSearch(lastSearch.isFirstSearch);
@@ -98,7 +123,7 @@ function App() {
         resetMoviesForm(lastSearch.sortPhrase);
       }
     })
-    .catch(console.log)
+    .catch(errorHandler);
   };
 
 
@@ -121,7 +146,7 @@ function App() {
       filterUserMovies();
       setIsShortUserMovies(false);
     }
-  } 
+  }
 
   useEffect(checkTokenEffectHandler, []); //проверка токена
   useEffect(loggedChangeHandler, [isLoggedIn]); // проверка авторизованности пользователя
@@ -141,16 +166,16 @@ function App() {
         const transformedMovies = transformMovies(movies);
         setAllMovies(transformedMovies);
         setIsFirstSearch(false);
-        localStorage.setItem('movies', JSON.stringify(transformedMovies))
+        localStorage.setItem('movies', JSON.stringify(transformedMovies));
       })
       .finally(() => setIsLoading(false));
   };
   const filterAllMovies = () => {
     const filteredMovies = filterMovies(moviesFormValue.search.value, isShortMovies, allMovies);
     if (filteredMovies.length === 0) {
-      setSearchMoviesText('По вашему запросу ничего не найдено')
+      setSearchMoviesText('По вашему запросу ничего не найдено');
     } else if (!moviesFormValue.search.value) {
-      setSearchMoviesText('Нужно ввести ключевое слово')
+      setSearchMoviesText('Нужно ввести ключевое слово');
     }
     setFindedMovies(filteredMovies);
   };
@@ -159,9 +184,8 @@ function App() {
     setFindedUserMovies(filteredMovies);
   };
 
-  
+
   const handleSearchMovies = () => {
-    // if (!moviesFormValue.search.value) return; // не даёт сделать запрос без запроса, на всякий пожарный
     if (isLoggedIn) {
       if (isFirstSearch || allMovies.length < 1) {
         getAndSortAllMovies();
@@ -171,11 +195,20 @@ function App() {
     }
   };
 
+  const handleCheckBox = () => {
+    if (allMovies.length === 0 && isFirstSearch) {
+      setSearchMoviesText('Нужно ввести ключевое слово');
+      return ;
+    }
+    handleSearchMovies();
+  }
+
   const handleSearchUserMovies = () => filterUserMovies();
-  
+
   // поиск по фильмам при сохранении массива всех фильмов, при клике по чекбоксу или при изменни массива пользовательских фильмов
-  useEffect(handleSearchMovies, [allMovies, isShortMovies]);
- 
+  useEffect(handleSearchMovies, [allMovies]);
+  useEffect(handleCheckBox, [isShortMovies]);
+
   // поиск по фильмам при изменеии массива всех пользовательских фильмов, при клике по чекбоксу
   useEffect(handleSearchUserMovies, [userMovies, isShortUserMovies]);
 
@@ -186,13 +219,14 @@ function App() {
     const id = movie._id ? movie._id : getMoviesId(movie.movieId);
     mainApi.deleteMovie(id)
       .then((m) => setUserMovies(state => state.filter(m => m._id !== id)))
-      .catch(console.log);
-  } 
+    .catch(errorHandler);
+  };
+
   const handleSaveMovie = (movie) => {
     mainApi.saveUserMovie(movie)
       .then((movie) => setUserMovies([movie, ...userMovies]))
-      .catch(console.log);
-  }
+      .catch(errorHandler);
+  };
 
 
 
@@ -228,22 +262,6 @@ function App() {
           setCurrentUser(userData);
         }
       }); // отлавливаю ошибки в файле формы
-  }
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setCurrentUser({ email: '', name: '' });
-    setUserMovies([]);
-    setAllMovies([]);
-    setFindedMovies([]);
-    setFindedUserMovies([])
-    setIsShortMovies(false);
-    setIsShortUserMovies(false);
-    resetMoviesForm({ search: initValidState });
-    resetUserMoviesForm({ search: initValidState });
-    setIsFirstSearch(true);
-    localStorage.clear();
-    mainApi.setAuthHeaders(null);
   };
 
 

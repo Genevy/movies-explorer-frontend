@@ -145,15 +145,19 @@
 
 @media screen and (max-width: 1100px) {
   .profile {
-    padding: 236px 0 269px 0;
+    padding: 236px 0 0;
   }
 
   .profile__title {
     padding-bottom: 96px;
   }
 
+  .profile__span {
+    margin-top: 157px;
+  }
+
   .profile__button_type_change {
-    margin: 190px 0 16px 0;
+    margin: 33px 0 16px 0;
   }
 }
 
@@ -175,9 +179,12 @@
     font-size: 12px;
     line-height: 15px;
   }
+  .profile__span {
+    margin-top: 100%;
+  }
 
   .profile__button_type_change {
-    margin: 360px 0 16px 0;
+    margin: 33px 0 16px 0;
   }
 
   .profile__button-link {
