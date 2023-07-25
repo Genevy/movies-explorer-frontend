@@ -4,7 +4,7 @@ import './Footer.css';
 function Footer() {
   const currentYear = new Date().getFullYear();
   const { pathname } = useLocation();
-  if ( pathname === '/signup' || pathname === '/signin') {
+  if ( pathname === '/signup' || pathname === '/signin' || pathname === '/profile') {
     return (<></>)
   };
   return (

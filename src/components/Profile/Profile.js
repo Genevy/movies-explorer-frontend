@@ -18,14 +18,7 @@ function Profile({ onSubmit, onLogout }) {
   const isValidInput = formValues.name.isValid() && formValues.email.isValid();
   const isNotEditedUserData = formValues.name.value === currentUser.name && formValues.email.value === currentUser.email;
   const toggleSubmit = isNotEditedUserData || !isValidInput || isFetching;
-  console.log(isNotEditedUserData, 'isEditedUserData');
-  console.log(isFetching, 'isFetching');
-  console.log(toggleSubmit, 'toggleSubmit');
-  console.log(formValues.name.isValid(), formValues.email.isValid());
-
   
-  
-
   const handleSubmit = (event) => {
     setIsFetching(true);
     setServerErrorMessage('');
@@ -60,8 +53,8 @@ function Profile({ onSubmit, onLogout }) {
     setServerErrorMessage('');
   };
   useEffect(() => resetForm({
-    name: { ...initValidState, value: currentUser.name, isDirty: true },
-    email: { ...initValidState, value: currentUser.email, isDirty: true },
+    name: { ...initValidState, value: currentUser.name, isDirty: true, isValid: () => true },
+    email: { ...initValidState, value: currentUser.email, isDirty: true, isValid: () => true },
   }), [currentUser]);
   return (
     <main className='profile'>

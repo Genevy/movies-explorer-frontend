@@ -18,6 +18,7 @@ import { MOVIES_URL, getAllMovies } from '../../utils/MoviesApi';
 import useValidation from '../../customHooks/useValidation';
 import initValidState from '../../utils/initValidState';
 import PreloaderPage from '../PreloaderPage/PreloaderPage';
+import { SHORT_MOVIES_LENGTH } from '../../utils/moviesParams';
 
 function App() {
   const navigate = useNavigate(); // хук навигации
@@ -128,7 +129,7 @@ function App() {
   useEffect(resetuserMoviesSearch, [isLoggedIn, pathname])
 
   const filterMovies = (sortPhrase, isShort, moviesArray) => {
-    const shortFilteredArray = moviesArray.filter((movie) => isShort ? movie.duration <= 40 : !isShort);
+    const shortFilteredArray = moviesArray.filter((movie) => isShort ? movie.duration <= SHORT_MOVIES_LENGTH : !isShort);
     return shortFilteredArray.filter((movie) => movie.nameEN.toLowerCase().includes(sortPhrase.toLowerCase())
     || movie.nameRU.toLowerCase().includes(sortPhrase.toLowerCase()));
   };
@@ -172,7 +173,7 @@ function App() {
 
   useEffect(() => {
     if (!isLoggedIn) return;
-    // if (allMovies.length === 0 && !moviesFormValue.search.value) return setSearchMoviesText('Введите поисковый запрос');
+    if (allMovies.length === 0 && !moviesFormValue.search.value) return setSearchMoviesText('Введите поисковый запрос');
     // if (!moviesFormValue.search.value) return setSearchMoviesText('Введите поисковый запрос');
     // if (moviesFormValue.search.value) setSearchMoviesText('Осуществите поиск');
     // if (allMovies.length > 0 && !isFirstSearch && moviesFormValue.search.value) {

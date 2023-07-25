@@ -3,7 +3,7 @@ import useWidth from '../../customHooks/useWidth';
 import './Movies.css'
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import PAGINATION_CONFIG from '../../utils/paginationConfig';
+import { PAGINATION_CONFIG } from '../../utils/moviesParams';
 
 function Movies({ movies, isLoading, findedMovies, onSave, checkIsLiked, onDelete, searchMessage, ...props }) {
   const [ sliceNumber, setSliceNumber ] = useState(0); // отображаемое количество фильмов
