@@ -11,7 +11,6 @@ function SearchForm({ searchValue, handleChange, handleCheck, isShortMovies, onS
         <span className="search-form__icon"></span>
         <input
           name="search"
-          minLength={1}
           type="text"
           placeholder="Фильм"
           className="search-form__input"
@@ -22,7 +21,6 @@ function SearchForm({ searchValue, handleChange, handleCheck, isShortMovies, onS
         />
         <button
           className="search-form__button hover-button"
-          disabled={!searchValue.search.value || searchValue.search.isEmpty}
           type="submit" />
         <span className="search-form__divider"></span>
         <label className="search-form__filter">
@@ -31,7 +29,7 @@ function SearchForm({ searchValue, handleChange, handleCheck, isShortMovies, onS
             className="search-form__checkbox"
             checked={isShortMovies}
             onChange={handleCheck}
-            disabled={!searchValue.search.value || searchValue.search.isEmpty}
+            // disabled={!searchValue.search.value || searchValue.search.isEmpty}
           />
           {/* <span className="search-form__checkbox-visible"></span> */}
           <p className="search-form__filter-name">Короткометражки</p>

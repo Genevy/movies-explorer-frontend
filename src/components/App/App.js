@@ -161,7 +161,7 @@ function App() {
 
   
   const handleSearchMovies = () => {
-    if (!moviesFormValue.search.value) return; // не даёт сделать запрос без запроса, на всякий пожарный
+    // if (!moviesFormValue.search.value) return; // не даёт сделать запрос без запроса, на всякий пожарный
     if (isLoggedIn) {
       if (isFirstSearch || allMovies.length < 1) {
         getAndSortAllMovies();
@@ -170,17 +170,6 @@ function App() {
       }
     }
   };
-
-  useEffect(() => {
-    if (!isLoggedIn) return;
-    if (allMovies.length === 0 && !moviesFormValue.search.value) return setSearchMoviesText('Введите поисковый запрос');
-    // if (!moviesFormValue.search.value) return setSearchMoviesText('Введите поисковый запрос');
-    // if (moviesFormValue.search.value) setSearchMoviesText('Осуществите поиск');
-    // if (allMovies.length > 0 && !isFirstSearch && moviesFormValue.search.value) {
-    if (allMovies.length > 0 && !isFirstSearch && moviesFormValue.search.value) {
-      setSearchMoviesText('Осуществите поиск');
-    }
-  }, [allMovies, isLoggedIn, moviesFormValue, isFirstSearch])
 
   const handleSearchUserMovies = () => filterUserMovies();
   
