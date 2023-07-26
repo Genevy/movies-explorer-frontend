@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import './AuthForm.css';
 import Logo from '../Logo/Logo';
+import errorMesages from '../../utils/errorMesages';
 
 function AuthForm({
   link,
@@ -7,67 +10,61 @@ function AuthForm({
   linkName,
   title,
   subtitle,
-  isValid,
-  linkTo,
-  ...props
+  children,
+  onSubmit,
+  toggleSubmit,
 }) {
+  const [isFetching, setIsFetching] = useState(false);
+  const [serverErrorMessage, setServerErrorMessage] = useState('');
+  const handleSubmit = event => {
+    setIsFetching(true);
+    event.preventDefault();
+    setServerErrorMessage('');
+    onSubmit()
+      .then(() => setServerErrorMessage(''))
+      .catch((errCode) => {
+        if (errCode === 400) {
+          return setServerErrorMessage(errorMesages.validatinError);
+        }
+        if (errCode === 401) {
+          return setServerErrorMessage(errorMesages.badData);
+        }
+        if (errCode === 409) {
+          return setServerErrorMessage(errorMesages.duplicateEmail);
+        }
+        if (errCode === 500) {
+          return setServerErrorMessage(errorMesages.serverError);
+        }
+        setServerErrorMessage(errorMesages.someError);
+        console.log(errCode);
+      })
+      .finally(() => setIsFetching(false));
+  }
   return (
     <section className='auth'>
       <Logo />
       <h1 className='auth__title'>{title}</h1>
-      <form className='auth__form'>
-        <>{props.children}</>
-        <label className='auth__label'>
-          E-mail
-          <input
-            id='email'
-            name='email'
-            type='email'
-            className='auth__input'
-            placeholder='Введите email'
-            minLength='8'
-            maxLength='40'
-            required
-          />
-          <span className='auth__input-error'></span>
-        </label>
-        <label className='auth__label'>
-          Пароль
-          <input
-            id='password'
-            name='password'
-            type='password'
-            className='auth__input'
-            placeholder='Введите пароль'
-            minLength='4'
-            maxLength='40'
-            required
-          />
-          <span className='auth__input-error'></span>
-        </label>
-      </form>
-
-      <button
-        className={`auth__submit-button hover-button ${props.buttonClass}`}
-        type='submit'
-      >
-        <Link
-          className='auth__button-link'
-          to={linkTo}
+      <form className='auth__form' onSubmit={handleSubmit} noValidate>
+        {children}
+        <span className="auth__submit-error">{serverErrorMessage}</span>
+        <button
+          className='auth__submit-button hover-button'
+          type='submit'
+          disabled={(!toggleSubmit || isFetching)}
         >
           {buttonText}
-        </Link>
-      </button>
+        </button>
 
-      <p className='auth__text'>
-        {subtitle}
-        <Link
-          className='auth__link hover-link'
-          to={link}
-        >
-          {linkName}
-        </Link>
-      </p>
+        <p className='auth__text'>
+          {subtitle}
+          <Link
+            className='auth__link hover-link'
+            to={link}
+          >
+            {linkName}
+          </Link>
+        </p>
+      </form>
     </section>
   );
 }

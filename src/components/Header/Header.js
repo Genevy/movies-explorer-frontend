@@ -1,56 +1,30 @@
-import { Routes, Route } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 import Logo from '../Logo/Logo';
 import Burger from '../Burger/Burger';
+import './Header.css';
 
-function Header() {
-  return (
-    <Routes>
-      <Route
-        exact
-        path='/'
-        element={
-          <header className='header header_type_landing'>
-            <Logo />
-            <Navigation />
-          </header>
-        }
-      ></Route>
-
-      <Route
-        exact
-        path='/movies/*'
-        element={
-          <header className='header header_type_movies'>
-            <Logo />
-            <Burger />
-          </header>
-        }
-      ></Route>
-
-      <Route
-        exact
-        path='/saved-movies/*'
-        element={
-          <header className='header header_type_movies'>
-            <Logo />
-            <Burger />
-          </header>
-        }
-      ></Route>
-
-      <Route
-        exact
-        path='/profile'
-        element={
-          <header className='header header_type_profile'>
-            <Logo />
-            <Burger />
-          </header>
-        }
-      ></Route>
-    </Routes>
-  );
+function Header(props) {
+  const { pathname } = useLocation();
+  const { isLoggedIn } = props;
+  if (!isLoggedIn) {
+    if(pathname === '/') {
+      return (
+        <header className='header header_type_landing'>
+          <Logo />
+          <Navigation />
+        </header>
+      )
+    }
+    return (<></>)
+  } else {
+    return (
+      <header className='header header_type_movies'>
+        <Logo />
+        <Burger />
+      </header>
+    )
+  }
 }
 
 export default Header;

@@ -27,6 +27,7 @@
   font-size: 10px;
   line-height: normal;
   color: #A0A0A0;
+  position: relative;
 }
 
 .auth__input {
@@ -35,6 +36,7 @@
   position: relative;
   height: 46px;
   border: 0;
+  outline: none;
   width: 100%;
   font-weight: 500;
   font-size: 14px;
@@ -43,30 +45,51 @@
   border-bottom: 1px solid #E8E8E8;
   top: -8px;
   padding: 0;
-  margin-bottom: 8px;
-}
-
-.auth__input:invalid {
-  color: #000;
+  margin-bottom: 27px;
+  transition: border .5s linear;
 }
 
 .auth__input:focus {
+  border-bottom-color: #878787;
+}
+
+
+.auth__input:valid, .auth__input_valid {
   outline: none;
   border-bottom: 1px solid #2BE080;
 }
 
+.auth__input:invalid, .auth__input_invalid {
+  color: #f00;
+}
+
+
 .auth__input-error {
   position: absolute;
-  margin-top: 190px;
-  margin-left: 0px;
+  /* margin-top: 190px; */
+  top: 56px;
+  left: 0;
   color: #EE3465;
   font-weight: 400;
   font-size: 10px;
   line-height: normal;
 }
 
+.auth__submit-error {
+  color: #FF004C;
+  text-align: center;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  min-height: 13px;
+  width: 100%;
+  display: inline-block;
+  margin: 168px 0 0;
+}
+
 .auth__submit-button {
-  background: #2be080;
+  background-color: #2be080;
   border-radius: 3px;
   height: 45px;
   border: none;
@@ -74,7 +97,12 @@
   font-size: 14px;
   line-height: 17px;
   color: #ffffff;
-  margin-top: 202px;
+  margin-top: 20px;
+  transition: background-color .3s linear;
+}
+
+.auth__submit-button:disabled {
+  background-color: #343434;
 }
 
 .auth__text {
@@ -111,12 +139,12 @@
   }
 
   .auth__submit-button {
-    margin-top: 203px;
+    margin-top: 20px;
     margin-bottom: 0px;
   }
 
   .auth__text {
-    margin-bottom: 0px;
+    margin-bottom: 20px;
   }
 }
 
@@ -140,8 +168,9 @@
     width: 260px;
     font-size: 12px;
     line-height: 15px;
-    margin-top: 294px;
+    margin-top: 20px;
   }
+
 
   .auth__text {
     font-size: 12px;

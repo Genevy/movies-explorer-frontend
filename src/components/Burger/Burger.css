@@ -67,8 +67,8 @@
   padding-left: 44px;
 }
 
-.menu__movies-all {
-  font-weight: 500;
+.menu__movies-link {
+  font-weight: 400;
   font-size: 13px;
   line-height: 18px;
   color: #000;
@@ -76,13 +76,10 @@
   padding-right: 16px;
 }
 
-.menu__movies-saved {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 18px;
-  color: #000;
-  text-decoration: none;
+.menu__movies-link_active {
+  font-weight: 500;
 }
+
 
 .menu__account {
   display: flex;
@@ -171,7 +168,7 @@
     margin: 159px 0 25px 0;
   }
 
-  .menu__movies-all {
+  .menu__movies-link {
     font-weight: 500;
     font-size: 18px;
     line-height: normal;
@@ -179,11 +176,6 @@
     margin: 0 0 22px;
   }
 
-  .menu__movies-saved {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: normal;
-  }
 
   .menu__movies {
     display: flex;
@@ -193,12 +185,7 @@
     padding: 0;
   }
 
-  .menu__movies-all.active {
-    border-bottom: 2px solid #000;
-    padding-top: 7px;
-  }
-
-  .menu__movies-saved.active {
+  .menu__movies-link_active {
     border-bottom: 2px solid #000;
     padding-top: 7px;
   }
@@ -237,22 +224,15 @@
     padding: 20px 0 20px 0;
   }
 
-  .menu__movies-all {
+  .menu__movies-link {
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
   }
 
-  .menu__movies-all.active {
+  .menu__movies-link_active {
     padding-top: 6px;
     padding-bottom: 6px;
-  }
-
-  .menu__movies-saved {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: normal;
-    margin-top: -5px;
   }
 
   .menu__account {

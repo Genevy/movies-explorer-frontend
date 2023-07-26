@@ -1,3 +1,5 @@
+import './Tech.css';
+
 function Tech() {
   return (
     <section

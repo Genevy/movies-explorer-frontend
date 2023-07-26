@@ -1,36 +1,38 @@
-import React, { useState } from 'react';
+import './SearchForm.css';
 
-function SearchForm() {
-  const [checked, setChecked] = useState(false);
-
-  const handleChange = () => {
-    setChecked(!checked);
-  };
-
+function SearchForm({ searchValue, handleChange, handleCheck, isShortMovies, onSubmit }) {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(searchValue.search.value, isShortMovies)
+  }
   return (
-    <section className='search-form'>
-      <form className='search-form__form'>
-        <span className='search-form__icon'></span>
+    <section className="search-form">
+      <form className="search-form__form" onSubmit={handleSubmit} noValidate>
+        <span className="search-form__icon"></span>
         <input
-          type='text'
-          placeholder='Фильм'
-          className='search-form__input'
+          name="search"
+          type="text"
+          placeholder="Фильм"
+          className="search-form__input"
+          value={searchValue.search.value}
+          onChange={handleChange}
+          autoComplete="no"
           required
         />
-        <button className='search-form__button hover-button'></button>
-        <span className='search-form__divider'></span>
-        <label className='search-form__filter'>
+        <button
+          className="search-form__button hover-button"
+          type="submit" />
+        <span className="search-form__divider"></span>
+        <label className="search-form__filter">
           <input
-            type='checkbox'
-            className='search-form__checkbox'
-            checked={checked}
-            onChange={handleChange}
+            type="checkbox"
+            className="search-form__checkbox"
+            checked={isShortMovies}
+            onChange={handleCheck}
+            // disabled={!searchValue.search.value || searchValue.search.isEmpty}
           />
-          <span
-            className='search-form__checkbox-visible'
-            hidden
-          ></span>
-          <p className='search-form__filter-name'>Короткометражки</p>
+          {/* <span className="search-form__checkbox-visible"></span> */}
+          <p className="search-form__filter-name">Короткометражки</p>
         </label>
       </form>
     </section>

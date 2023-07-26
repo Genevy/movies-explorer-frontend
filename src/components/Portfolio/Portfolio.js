@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import arrow from '../../images/arrow.svg';
+import './Portfolio.css';
 
 function Portfolio() {
   return (

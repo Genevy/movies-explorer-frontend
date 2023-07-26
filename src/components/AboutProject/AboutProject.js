@@ -1,3 +1,5 @@
+import './AboutProject.css';
+
 function AboutProject() {
   return (
     <section className='about'>
