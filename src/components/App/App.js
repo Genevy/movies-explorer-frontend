@@ -186,6 +186,11 @@ function App() {
 
 
   const handleSearchMovies = () => {
+    if (!moviesFormValue.search.value) {
+      setFindedMovies([]);
+      setSearchMoviesText('Нужно ввести ключевое слово');
+      return ;
+    }
     if (isLoggedIn) {
       if (isFirstSearch || allMovies.length < 1) {
         getAndSortAllMovies();
