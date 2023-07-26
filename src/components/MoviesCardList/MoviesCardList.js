@@ -12,38 +12,38 @@ function MoviesCardList({ findedMovies, isLoading, onSave, checkIsLiked, onDelet
     <section className='movies-list'>
       {
         isLoading ? <Preloader />
-        : <ul className='movies-list__grid'>
-        {
-          findedMovies.map((item) => (
-            <MoviesCard
-              checkIsLiked={checkIsLiked}
-              onSave={onSave}
-              key={item.movieId}
-              onDelete={onDelete} 
-              card={item}
-            />
-            ))
-        }
-      </ul>
+        : 
+        <>
+          <ul className='movies-list__grid'>
+            {
+              findedMovies.map((item) => (
+                <MoviesCard
+                  checkIsLiked={checkIsLiked}
+                  onSave={onSave}
+                  key={item.movieId}
+                  onDelete={onDelete} 
+                  card={item}
+                />
+              ))
+            }
+          </ul>
+          {
+            (pathname === '/movies' && !isLoading && !props.isFullSliced) || (props.isFullSliced && findedMovies.length === 0)
+              ? ((findedMovies.length === 0)
+                ? <p>{props.searchMessage}</p>
+                : <button
+                  className='movies-list__more-button hover-button'
+                  type='button'
+                  aria-label='Показать еще'
+                  onClick={props.onPagination}
+                >
+                  Ещё
+                </button>
+              )
+            : <></>
+          }
+        </>
       }
-      {
-        (pathname === '/movies' && !isLoading && !props.isFullSliced) || (props.isFullSliced && findedMovies.length === 0)
-          ? ((findedMovies.length === 0) ?  
-          <>
-          <p>{props.searchMessage}</p>
-          </>
-          : (
-            <button
-              className='movies-list__more-button hover-button'
-              type='button'
-              aria-label='Показать еще'
-              onClick={props.onPagination}
-            >
-              Ещё
-            </button>
-            ))
-          : <></> 
-        }
     </section>
   );
 }
